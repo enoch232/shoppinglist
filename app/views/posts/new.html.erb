@@ -1,0 +1,14 @@
+<div class = "container text-body">
+<h1>New Item </h1>
+<%= form_for (@post) do |f| %>
+<%= f.label "Item" %>
+<%= f.text_field :title %>
+<%= f.submit %>
+
+<% end %>
+<br>
+<br>
+<%= link_to root_path do %>
+<i class="fa fa-chevron-left"></i>
+<% end %>
+</div>
