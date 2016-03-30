@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 	before_action :find_post, only: [:destroy]
   def index
   	@posts = Post.all
+    @total = @total
   end
   def new
   	@post = Post.new
@@ -14,10 +15,13 @@ class PostsController < ApplicationController
   	doc = Nokogiri::HTML(open(url))
   	@title = params[:post][:title]
   	import = doc.at_css(".price-display")
+    @total ||= 0
   	if import != nil
   		@price = import.text
+      @price = (@price[2..@price.length-1]).to_f
+      @total = @total + @price
   	else
-  		@price = "?"
+  		@price = 0
   	end
   	@post = Post.new({title: @title, price: @price})
 

@@ -1,6 +1,6 @@
 class AddPriceToPost < ActiveRecord::Migration
   def change
-    add_column :posts, :price, :string
+    add_column :posts, :price, :decimal
   end
 end
 

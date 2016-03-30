@@ -7,11 +7,12 @@
 </br>
 <br>
 <% @posts.each do |post| %>
-<span style = "color:#26A69A"><%= post.title %></span> <i class="fa fa-chevron-circle-right"></i> <span style = "color:#607D8B"><%= post.price %></span>
+<span style = "color:#26A69A"><%= post.title %></span> <i class="fa fa-chevron-circle-right"></i> <span style = "color:#607D8B"> $<%= post.price %></span>
 <%= link_to post, method: :delete do %>
 	<i class="fa fa-trash"></i>
 <% end %>
 <br>
 <br>
 <% end %>
+<div>Total: $<%= @total %> </div>
 </div>
