@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   def index
   	@posts = Post.all
 
+
   end
 
   def new
@@ -54,7 +55,7 @@ class PostsController < ApplicationController
       
       
 
-  	@post = Post.new({title: @title, price: @price.round(2) })
+  	@post = Post.new({title: @title, price: @price.round(2)})
 
   	if @post.save
   		redirect_to root_path
