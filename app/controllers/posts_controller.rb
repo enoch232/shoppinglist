@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 	before_action :find_post, only: [:destroy]
   def index
   	@posts = Post.all
+    
 
 
   end
@@ -59,11 +60,38 @@ class PostsController < ApplicationController
       @price3 = 0
     end
 
-    render plain: @price3
+    
+    
+    if @price1 > 0 && @price2 > 0 && @price3 > 0
+      #if there is bigger difference from price1 and price2, than from price1 and price2
+      if (@price1-@price2).abs > (@price1- @price3).abs
+        @price = (@price1+@price3)/2
+      elsif (@price1-@price2).abs < (@price1- @price3).abs
+         @price = (@price1+@price2)/2
+      else
+        @price = (@price1+@price2+@price3)/3
+      end
+      #if price3 is null, then average the two between price1 and price2
+    elsif @price1 > 0 && @price2 > 0 && @price3 == 0
+      @price = (@price1 +@price2)/2
+    elsif @price1 > 0 && @price3 > 0 && @price2 == 0
+      @price = (@price1 +@price3)/2
+    elsif @price2 > 0 && @price3 > 0 && @price1 == 0
+      @price = (@price2+@price3)/2
+      #next three checking if two are null, then make the one as the only source.
+    elsif @price1 > 0 && @price2 == 0 && @price3 == 0
+      @price = @price1
+    elsif @price2 > 0 && @price3 == 0 && @price1 == 0
+      @price = @price2
+    elsif @price3 > 0 && @price1 == 0 && @price2 == 0
+      @price = @price3
+    else
+      @price = 0
+    end
 
-    #if @price1 > 0 && @price2 > 0
-    #  @price = (@price1+@price2)/2
-    #elsif @price1 && @price2 == 0
+    #if @price1 > 0 && @price2 > 0 && @price3> 0
+    #  @price = (@price1+@price2+@price3)/3
+    #elsif @price1 && (@price2 == 0)
     #  @price = @price1
     #elsif @price1 == 0 && @price2
     #  @price = @price2
@@ -71,17 +99,17 @@ class PostsController < ApplicationController
     #  @price = 0
     #end
 
-
+    
       
       
 
-  	#@post = Post.new({title: @title, price: @price.round(2)})
+  	@post = Post.new({title: @title, price: @price.round(2)})
 
-  	#if @post.save
-  	#	redirect_to root_path
-  	#else
-  	#	render :new
-  	#end
+  	if @post.save
+  		redirect_to root_path
+    else
+  		render :new
+  	end
   end
 
   def update
