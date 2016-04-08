@@ -17,13 +17,23 @@ class PostsController < ApplicationController
   	doc1 = Nokogiri::HTML(open(url))
   	
     #walmart
-  	import1 = doc1.at_css(".price-display")
+  	
 
     url = "http://www.target.com/s?searchTerm=#{params[:post][:title]}&category=0%7CAll%7Cmatchallpartial%7Call+categories&lnk=snav_sbox_#{params[:post][:title]}"
     doc2 = Nokogiri::HTML(open(url))
     
     #target
+
+    url = "http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=#{params[:post][:title]}"
+    doc3 = Nokogiri::HTML(open(url))
+    
+    #amazon
+
+    import1 = doc1.at_css(".price-display")
     import2 = doc2.at_css(".price-label")
+    import3 = doc3.at_css(".s-price")
+
+
     @title = params[:post][:title]
   	if import1 != nil
   		@price1 = import1.text
