@@ -51,27 +51,37 @@ class PostsController < ApplicationController
       @price2 = 0
     end
 
-    if @price1 > 0 && @price2 > 0
-      @price = (@price1+@price2)/2
-    elsif @price1 && @price2 == 0
-      @price = @price1
-    elsif @price1 == 0 && @price2
-      @price = @price2
+    if import3 != nil
+      @price3 = import3.text
+      @price3 = (@price3[1..@price3.length-1]).to_f
+      
     else
-      @price = 0
+      @price3 = 0
     end
 
+    render plain: @price3
+
+    #if @price1 > 0 && @price2 > 0
+    #  @price = (@price1+@price2)/2
+    #elsif @price1 && @price2 == 0
+    #  @price = @price1
+    #elsif @price1 == 0 && @price2
+    #  @price = @price2
+    #else
+    #  @price = 0
+    #end
+
 
       
       
 
-  	@post = Post.new({title: @title, price: @price.round(2)})
+  	#@post = Post.new({title: @title, price: @price.round(2)})
 
-  	if @post.save
-  		redirect_to root_path
-  	else
-  		render :new
-  	end
+  	#if @post.save
+  	#	redirect_to root_path
+  	#else
+  	#	render :new
+  	#end
   end
 
   def update
