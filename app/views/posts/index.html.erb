@@ -6,10 +6,10 @@
 <% end %>
 </br>
 <br>
-<% prices = 0.00 %>
+<% prices = 0 %>
 <% @posts.each do |post| %>
 <span style = "color:#26A69A"><%= post.title %></span> <i class="fa fa-chevron-circle-right"></i> <span style = "color:#607D8B"> $ <%= post.price %></span>
-<% prices = (post.price).to_f + (prices).to_f %>
+<% prices = (post.price).to_f + prices %>
 <%= link_to post, method: :delete do %>
 	<i class="fa fa-trash"></i>
 <% end %>
@@ -17,5 +17,5 @@
 <br>
 <% end %>
 <br>
-Total estimated cost: $<%= prices %>
+Total estimated cost: $<%= prices.round(2) %>
 </div>
