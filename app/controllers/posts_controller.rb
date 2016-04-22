@@ -3,9 +3,7 @@ class PostsController < ApplicationController
 	before_action :find_post, only: [:destroy]
   def index
   	@posts = Post.all
-    
-
-
+    @post = Post.new
   end
 
   def new
@@ -18,7 +16,7 @@ class PostsController < ApplicationController
   	doc1 = Nokogiri::HTML(open(url))
   	
     #walmart
-  	
+
 
     url = "http://www.target.com/s?searchTerm=#{params[:post][:title]}&category=0%7CAll%7Cmatchallpartial%7Call+categories&lnk=snav_sbox_#{params[:post][:title]}"
     doc2 = Nokogiri::HTML(open(url))
@@ -36,13 +34,13 @@ class PostsController < ApplicationController
 
 
     @title = params[:post][:title]
-  	if import1 != nil
-  		@price1 = import1.text
+    if import1 != nil
+      @price1 = import1.text
       @price1 = (@price1[2..@price1.length-1]).to_f
       
-  	else
-  		@price1 = 0
-  	end
+    else
+      @price1 = 0
+    end
 
     if import2 != nil
       @price2 = import2.text
@@ -67,10 +65,10 @@ class PostsController < ApplicationController
       if (@price1-@price2).abs > (@price1- @price3).abs
         @price = (@price1+@price3)/2
       elsif (@price1-@price2).abs < (@price1- @price3).abs
-         @price = (@price1+@price2)/2
-      else
-        @price = (@price1+@price2+@price3)/3
-      end
+       @price = (@price1+@price2)/2
+     else
+      @price = (@price1+@price2+@price3)/3
+    end
       #if price3 is null, then average the two between price1 and price2
     elsif @price1 > 0 && @price2 > 0 && @price3 == 0
       @price = (@price1 +@price2)/2
@@ -100,16 +98,16 @@ class PostsController < ApplicationController
     #end
 
     
-      
-      
 
-  	@post = Post.new({title: @title, price: @price.round(2)})
 
-  	if @post.save
-  		redirect_to root_path
+
+    @post = Post.new({title: @title, price: @price.round(2)})
+
+    if @post.save
+      redirect_to root_path
     else
-  		render :new
-  	end
+      render :new
+    end
   end
 
   def update

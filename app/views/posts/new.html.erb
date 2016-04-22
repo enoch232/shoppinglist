@@ -1,14 +1,14 @@
 <div class = "container text-body" style = "text-align:center">
-<h1>New Item </h1>
-<%= form_for (@post) do |f| %>
-<div style = "width:50%;display:inline-block">
-<%= f.text_field :title, placeholder: "Search your item..", class: "form-control searchiteminput" %>
-<%= f.submit "Add item" ,class: "btn btn-default" %>
-</div>
-<% end %>
-<br>
-<br>
-<%= link_to root_path do %>
-<i class="fa fa-chevron-left"></i>
-<% end %>
+	<h1>New Item </h1>
+	<%= form_for (@post) do |f| %>
+	<div style = "width:50%;display:inline-block">
+		<%= f.text_field :title, placeholder: "Search your item..", class: "form-control searchiteminput" %>
+		<%= f.submit "Add item" ,class: "btn btn-default" %>
+	</div>
+	<% end %>
+	<br>
+	<br>
+	<%= link_to root_path do %>
+	<i class="fa fa-chevron-left"></i>
+	<% end %>
 </div>
