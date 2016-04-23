@@ -4,12 +4,17 @@
 			Shopping List
 		</div>
 		<div>
-			<%= form_for (@post) do |f| %>
 			<div class = "new-item-input">
-				<%= f.text_field :title, placeholder: "Search your item..", class: "form-control searchiteminput" %>
-				<%= f.submit "Add item" ,class: "btn btn-default" %>
-			</div>
+			<%= form_for (@post) do |f| %>
+			
+				<div class = "field">
+				<%= f.text_field :title, placeholder: "Search your item..", class: "search-item-input" %>
+				</div>
+				<div class = "field">
+				<%= f.submit "Add" ,class: "btn btn-default add-button" %>
+				</div>
 			<% end %>
+			</div>
 		</div>
 	</div>
 	<div>
