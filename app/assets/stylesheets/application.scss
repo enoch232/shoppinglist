@@ -15,18 +15,23 @@ h1{
 }
 
 .nav{
+	position:fixed;
 	text-align:center;
 	height:130px;
 	width:100%;
 	background-color:#f37a4b;
 	display:inline-block;
+	top:0;
+	left:0;
 
 }
 .logo{
 	font-size:3rem;
+	font-family: "Comic Sans MS";
 
 }
 .new-item-input{
+	
 	display:inline;
 	top:1rem;
 }
@@ -39,7 +44,123 @@ h1{
 	height:4rem;
 	font-size:2rem;
 	border-style:solid;
+	border-width:3px;
+}
+.search-item-input:focus{
+	width:45rem;
+	border-radius:0.5rem;
+	height:4rem;
+	font-size:2rem;
+	border-style:solid;
+	border-width:3px;
 }
 .add-button{
+
+	position:absolute;
+	margin-left:1rem;
 	height:4rem;
+	border-style:solid;
+	border-color:black;
+	background-color:#b18fc1;
+	border-width:3px;
+
 }
+.add-button:hover{
+	height:4rem;
+	border-style:solid;
+	border-color:black;
+	background-color:#b18fc1;
+	
+}
+*:focus {
+    outline: none;
+}
+.item{
+	background-color:#ebe6fd;
+	color:black;
+	margin-left:0.5rem;
+	margin-right:0.5rem;
+	margin-top:1rem;
+	margin-bottom:1rem;
+	padding-top:1rem;
+	padding-top:1.5rem;
+	padding-bottom:1.5rem;
+	padding-left:1.2rem;
+	text-align:left;
+	font-size:2.5rem;
+	font-weight:500;
+	width:85%;
+	display:inline-block;
+	border-radius:7px;
+
+}
+.item-number{
+	background-color:#b18fc1;
+	border-radius:0.3rem;
+	padding-right:0.5rem;
+	padding-left:0.5rem;
+	display:inline-block;
+
+	
+}
+.item-title{
+	font-size:3rem;
+	margin-left:1rem;
+
+}
+.item-delete{
+	display:inline-block;
+}
+.delete-btn{
+	padding-top:1.5rem;
+	padding-bottom:1.5rem;
+	padding-right:2rem;
+	padding-left:2rem;
+
+}
+.item-price{
+	float:right;
+	background-color:#f37a4b;
+	display:inline-block;
+	padding-right:3rem;
+	padding-left:2rem;
+	width:15rem;
+	margin-right:3rem;
+	border-radius:6px;
+
+}
+.bottom-nav{
+	position:fixed;
+	text-align:center;
+	height:80px;
+	width:100%;
+	background-color:#f37a4b;
+	display:inline-block;
+	bottom:0;
+	left:0;
+
+}
+.estimated-cost-text{
+	color:black;
+	font-size:4rem;
+	font-weight:600;
+	margin:auto 0;
+	display:inline-block;
+	
+}
+.estimated-price{
+	text-align:center;
+	font-size:4rem;
+	font-weight:400;
+	color:black;
+	margin-top: 1rem;
+	border-radius:10px;
+	background-color:#ebe6fd;
+	margin-left:1rem;
+	padding-left:1rem;
+	padding-right:1rem;
+	display:inline-block;
+	
+}
+
+

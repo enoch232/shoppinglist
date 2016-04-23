@@ -3,33 +3,44 @@
 		<div class ="logo">
 			Shopping List
 		</div>
+		<br>
 		<div>
 			<div class = "new-item-input">
-			<%= form_for (@post) do |f| %>
-			
+				<%= form_for (@post) do |f| %>
+
 				<div class = "field">
-				<%= f.text_field :title, placeholder: "Search your item..", class: "search-item-input" %>
+					<%= f.text_field :title, placeholder: "Search your item..", class: "search-item-input" %>
 				</div>
 				<div class = "field">
-				<%= f.submit "Add" ,class: "btn btn-default add-button" %>
+					<%= f.submit "Add" ,class: "btn btn-default add-button" %>
 				</div>
-			<% end %>
+				<% end %>
 			</div>
 		</div>
 	</div>
+	<div style = "display:block;height:13rem;">
+	</div>
 	<div>
 		<% prices = 0 %>
+		<% number = 1 %>
 		<% @posts.each do |post| %>
-		<span style = "color:#26A69A"><%= post.title %></span> <i class="fa fa-chevron-circle-right"></i> <span style = "color:#607D8B"> $ <%= post.price %></span>
-		<% prices = (post.price).to_f + prices %>
-		<%= link_to post, method: :delete do %>
-		<i class="fa fa-trash"></i>
-		<% end %>
-		<br>
-		<br>
+		<div class = "item">
+			<span class = "item-number"><%= number %>. </span>
+			<span class = "item-title"><%= post.title %></span><span class = "item-price"> $ <%= post.price %></span>
+			<% prices = (post.price).to_f + prices %>
+			<% number = number +1 %>
+			
+		</div>
+		<div class = "item-delete">
+			<%= link_to "X",  post, method: :delete, class: "btn btn-danger delete-btn" %>
+		</div>
 		<% end %>
 
 
+	</div>
+	<div class ="bottom-nav">
+		<div class = "estimated-cost-text">Total Estimated Cost:      $</div>
+		<div class = "estimated-price"><%= prices.round(2) %></div>
 	</div>
 
 
