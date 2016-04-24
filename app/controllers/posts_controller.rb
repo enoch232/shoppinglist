@@ -110,12 +110,7 @@ class PostsController < ApplicationController
     #  @price = 0
     #end
 
-    
-
-
-
     @post = Post.new({title: @title, price: @price.round(2)})
-    $number += 1
     if @post.save
       redirect_to root_path
     else
