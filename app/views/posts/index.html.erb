@@ -21,15 +21,18 @@
 	<div style = "display:block;height:13rem;">
 	</div>
 	<div class = "post-holder">
+		<% $total_price = 0 %>
+		<% $number = 0 %>
 		<% @posts.each do |post| %>
-		<%= render 'post', post: post%>
+		<% $number += 1 %>
+		<%= render 'post', post: post %>
 		<% end %>
 
 
 	</div>
 	<div class ="bottom-nav">
 		<div class = "estimated-cost-text">Total Estimated Cost:      $</div>
-		<!--<div class = "estimated-price"></div> -->
+		<div class = "estimated-price"></div>
 	</div>
 
 

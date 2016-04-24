@@ -1,2 +1,3 @@
 console.log("List added.");
 $(".post-holder").append("<%= j render 'post', post: @post %>");
+$("div#<%= dom_id(@post) %> item-number").text("<%= $number %>.")
