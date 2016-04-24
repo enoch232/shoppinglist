@@ -1,9 +1,7 @@
 <%= div_for post do %>
 <div class = "item">
 	<span class = "item-number"><%= number %>.</span>
-	<span class = "item-title"><%= post.title %></span><span class = "item-price"> $ <%= post.price %></span>
-	
-
+	<span class = "item-title"><%= post.title %></span><span class = "item-price"> $ <%= sprintf("%0.02f",post.price) %></span>
 </div>
 <div class = "item-delete">
 	<%= link_to "X",  post, method: :delete, class: "btn btn-danger delete-btn" %>

@@ -33,9 +33,8 @@
 	</div>
 	<div class ="bottom-nav">
 		<div class = "estimated-cost-text">Total Estimated Cost:      $</div>
-		<div class = "estimated-price"><%= @total_price.round(2) %></div>
+		<div class = "estimated-price"><%= sprintf("%0.02f",@total_price) %></div>
 	</div>
-
 
 
 </div>
