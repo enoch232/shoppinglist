@@ -6,6 +6,6 @@
 
 </div>
 <div class = "item-delete">
-	<%= link_to "X",  post, method: :delete, class: "btn btn-danger delete-btn" %>
+	<%= link_to "X",  post, method: :delete, remote: true, class: "btn btn-danger delete-btn" %>
 </div>
 <% end %>
