@@ -117,10 +117,7 @@ class PostsController < ApplicationController
     @post = Post.new({title: @title, price: @price.round(2)})
     $number += 1
     if @post.save
-      respond_to do |format|
-        format.html{redirect_to root_path}
-        format.js
-      end
+      redirect_to root_path
     else
       render :new
     end
