@@ -26,6 +26,7 @@
 		<% @number = 0 %>
 		<% @posts.each do |post| %>
 		<% @number += 1 %>
+		<% $total_price += (post.price).to_f %>
 		<%= render 'post', post: post, number: @number %>
 		<% end %>
 
@@ -33,7 +34,7 @@
 	</div>
 	<div class ="bottom-nav">
 		<div class = "estimated-cost-text">Total Estimated Cost:      $</div>
-		<div class = "estimated-price"></div>
+		<div class = "estimated-price"><%= $total_price.round(2) %></div>
 	</div>
 
 

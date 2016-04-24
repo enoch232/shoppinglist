@@ -1,4 +1,5 @@
 console.log("List added.");
 $(".post-holder").append("<%= j render 'post', post: @post, number: @number %>");
 $("div#<%= dom_id(@post) %> .item-number").text("<%= $number %>.");
+$(".estimated-price").text("<%= ($total_price+ @post.price).round(2) %>");
 
