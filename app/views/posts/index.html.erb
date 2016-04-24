@@ -6,7 +6,7 @@
 		<br>
 		<div>
 			<div class = "new-item-input">
-				<%= form_for (@post) do |f| %>
+				<%= form_for (@post) ,remote: true do |f| %>
 
 				<div class = "field">
 					<%= f.text_field :title, placeholder: "Search your item..", class: "search-item-input" %>
@@ -20,27 +20,16 @@
 	</div>
 	<div style = "display:block;height:13rem;">
 	</div>
-	<div>
-		<% prices = 0 %>
-		<% number = 1 %>
+	<div class = "post-holder">
 		<% @posts.each do |post| %>
-		<div class = "item">
-			<span class = "item-number"><%= number %>. </span>
-			<span class = "item-title"><%= post.title %></span><span class = "item-price"> $ <%= post.price %></span>
-			<% prices = (post.price).to_f + prices %>
-			<% number = number +1 %>
-			
-		</div>
-		<div class = "item-delete">
-			<%= link_to "X",  post, method: :delete, class: "btn btn-danger delete-btn" %>
-		</div>
+		<%= render 'post', post: post%>
 		<% end %>
 
 
 	</div>
 	<div class ="bottom-nav">
 		<div class = "estimated-cost-text">Total Estimated Cost:      $</div>
-		<div class = "estimated-price"><%= prices.round(2) %></div>
+		<!--<div class = "estimated-price"></div> -->
 	</div>
 
 
