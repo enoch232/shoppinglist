@@ -12,25 +12,38 @@ class PostsController < ApplicationController
   def create
   	require 'nokogiri'
   	require 'open-uri'
-  	url = "http://www.walmart.com/search/?query=#{params[:post][:title]}"
-  	doc1 = Nokogiri::HTML(open(url))
-  	
+    begin
+     url = "http://www.walmart.com/search/?query=#{params[:post][:title]}"
+     doc1 = Nokogiri::HTML(open(url))
+     import1 = doc1.at_css(".price-display")
+    rescue
+      import1 = nil
+    end
     #walmart
 
-
+    begin
     url = "http://www.target.com/s?searchTerm=#{params[:post][:title]}&category=0%7CAll%7Cmatchallpartial%7Call+categories&lnk=snav_sbox_#{params[:post][:title]}"
     doc2 = Nokogiri::HTML(open(url))
-    
+    import2 = doc2.at_css(".price-label")
+    rescue
+      import2 = nil
+    end
     #target
-
+    begin
     url = "http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=#{params[:post][:title]}"
     doc3 = Nokogiri::HTML(open(url))
-    
+    import3 = doc3.at_css(".s-price")
+    rescue
+      import3 = nil
+    end
+
+
+
     #amazon
 
-    import1 = doc1.at_css(".price-display")
-    import2 = doc2.at_css(".price-label")
-    import3 = doc3.at_css(".s-price")
+    
+    
+    
 
 
     @title = params[:post][:title]
