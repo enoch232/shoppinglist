@@ -3,7 +3,9 @@
 h1{
 	font-family: 'Indie Flower', cursive;
 }
-
+body{
+	background-color:#757575;
+}
 .text-body{
 	width:40em;
 	height:30em;
@@ -164,8 +166,9 @@ h1{
 	
 }
 .post-holder{
-	height:53rem;
-	overflow:auto;
+
+	overflow:scroll;
+	padding-bottom:7%;
 	
 }
 
